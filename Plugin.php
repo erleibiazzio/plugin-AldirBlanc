@@ -246,6 +246,10 @@ class Plugin extends \MapasCulturais\Plugin
             // $app->view->enqueueStyle('app','chat','chat.css');
         }
 
+        $app->hook('template(opportunity.single.payment-edit-modal-metadata):begin', function(){
+            $this->part('aldirblanc/observacoes-pagamento');
+        });
+
         // adiciona informações do status das validações ao formulário de avaliação
         $app->hook('template(registration.view.evaluationForm.simple):before', function(Registration $registration, $opportunity) use($inciso1Ids, $inciso2Ids) {
             $opportunities_ids = array_merge($inciso1Ids, $inciso2Ids);
